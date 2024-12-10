@@ -1,0 +1,17 @@
+/public/
+/resources/_gen/
+/hugo_stats.json
+.DS_Store
+Thumbs.db
+*.sublime-project
+*.sublime-workspace
+.idea/
+/.vscode/
+*.log
+*.tmp
+*.swp
+*~
+*.o
+*.a
+*.so
+*.exe
