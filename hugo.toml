@@ -1,6 +1,6 @@
-baseURL = 'https://pehtheme-hugo.netlify.app/'
+baseURL = ''
 languageCode = 'en-us'
-title = 'Pehtheme'
+title = 'Logos Ad Astra'
 theme = 'pehtheme-hugo'
 
 paginate = '6' # <- Set the desired number of posts per page 

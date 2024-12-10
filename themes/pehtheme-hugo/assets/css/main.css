@@ -7,6 +7,15 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
+:root {
+  --bg: #121212;
+  --terceary: #282828;
+  --secondary: #3f3f3f;
+  --hover: #575757;
+  --light: #8b8b8b;
+  --accent: #cafd00;
+
+}
 *,
 ::before,
 ::after {
@@ -58,6 +67,8 @@ html {
 */
 
 body {
+  background-color: var(--bg);
+  color: var(--light);
   margin: 0;
   /* 1 */
   line-height: inherit;
@@ -134,6 +145,7 @@ pre {
   font-size: 1em;
   /* 2 */
 }
+
 
 /*
 Add the correct font size in all browsers.
@@ -1405,6 +1417,32 @@ video {
   background-color: rgb(244 244 245 / var(--tw-bg-opacity));
 }
 
+.title-accent:hover{
+  color: black;
+}
+
+.title-accent{
+  color: var(--accent)
+}
+
+.color-accent{
+  color: var(--accent)
+}
+
+.bg-accent{
+  color: black;
+  background-color: var(--accent);
+}
+
+
+.main-section-bg {
+  background-color: var(--terceary)
+}
+
+.footer-section-bg {
+  background-color: var(--terceary)
+}
+
 .fill-white {
   fill: #fff;
 }
@@ -1875,10 +1913,6 @@ video {
   }
 }
 
-.before\:pointer-events-auto::before {
-  content: var(--tw-content);
-  pointer-events: auto;
-}
 
 .before\:absolute::before {
   content: var(--tw-content);
@@ -1954,6 +1988,18 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
 }
+
+.hover\:accent:hover {
+  color: black;
+  border-color: var(--accent);
+  background-color: var(--accent);
+}
+
+.hover\:main-section:hover {
+  color: black;
+  background-color: var(--accent);;
+}
+
 
 .hover\:bg-zinc-100:hover {
   --tw-bg-opacity: 1;
