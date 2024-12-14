@@ -1,11 +1,13 @@
 /public/
 /resources/_gen/
+node_modules
 /hugo_stats.json
 .DS_Store
 Thumbs.db
 *.sublime-project
 *.sublime-workspace
 .idea/
+.env
 /.vscode/
 *.log
 *.tmp
