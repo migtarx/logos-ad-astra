@@ -8,8 +8,10 @@ const Server = {
     const routes = require('./routes/routes.js');
     const { launchLog } = require("./utils/logger.js")
     const { fetchSecrets } = require('./utils/secrets.js')
+    const logger = require('./middlewares/logger');
   
     app.use(express.json());
+    app.use(logger)
     app.use('/status', routes.statusRoute);
     app.use(express.static(path.join(__dirname, '../', 'public')));
 
