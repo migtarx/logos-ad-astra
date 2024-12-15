@@ -1,0 +1,27 @@
+name: Start platform
+run-name: Start ${{ inputs.deploy_env }}
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_env:
+        type: choice
+        default: PRODUCTION
+        description: Deploy enviroment
+        options:
+        - PRODUCTION
+
+jobs:
+  deploy:
+    name: Start ${{ github.event.inputs.deploy_env }}
+    runs-on: [self-hosted, linux, x64, "${{ github.event.inputs.deploy_env }}"]
+    steps:
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.PACKAGE_TOKEN }}
+      - name: Run containers
+        run: |
+          cd ~/laa-platform
+          ENV=${{ vars.ENV }} ELASTICSEARCH_HOST=${{ secrets.ELASTICSEARCH_HOST }} ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY }} INFI_URI=${{ secrets.INFI_URI }} CLIENT_ID=${{ secrets.CLIENT_ID }} CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} PROJECT_ID=${{ secrets.PROJECT_ID }} docker compose up -d

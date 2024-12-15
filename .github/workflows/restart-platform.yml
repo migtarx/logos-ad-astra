@@ -1,0 +1,18 @@
+name: Restart platform
+on:
+  workflow_dispatch:
+
+jobs:
+  restart:
+    name: Restart containers
+    runs-on: [self-hosted, linux, x64]
+
+    steps:
+      - name: Stop containers
+        run: |
+          docker stop $(docker ps -aq)
+      
+      - name: Start containers
+        run: |
+          cd ~/falconflare-platform
+          ENV=${{ vars.ENV }} ELASTICSEARCH_HOST=${{ secrets.ELASTICSEARCH_HOST }} ELASTICSEARCH_API_KEY=${{ secrets.ELASTICSEARCH_API_KEY }} INFI_URI=${{ secrets.INFI_URI }} CLIENT_ID=${{ secrets.CLIENT_ID }} CLIENT_SECRET=${{ secrets.CLIENT_SECRET }} PROJECT_ID=${{ secrets.PROJECT_ID }} docker compose up -d
